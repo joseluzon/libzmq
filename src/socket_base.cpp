@@ -999,7 +999,8 @@ int zmq::socket_base_t::connect_internal (const char *endpoint_uri_)
 #endif
 
     if (protocol == protocol_name::udp) {
-        if (options.type != ZMQ_RADIO) {
+        if (options.type != ZMQ_DISH && options.type != ZMQ_RADIO
+            && options.type != ZMQ_DGRAM ) {
             errno = ENOCOMPATPROTO;
             LIBZMQ_DELETE (paddr);
             return -1;
